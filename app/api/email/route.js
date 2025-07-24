@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import emailModel from "@/lib/models/emailrequest";
-import ConnectDB from "@/lib/config/mongodb";
+import ConnectmongoDB from "@/lib/config/email";
+import mongoose from "mongoose";
  const LoadDb= async()=>
     {
-        await ConnectDB()   
+        await ConnectmongoDB()   
     }
-
+    console.log(mongoose.connection.name); 
     LoadDb()
     export async function GET(request)
  {
