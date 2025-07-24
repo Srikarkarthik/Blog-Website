@@ -1,10 +1,9 @@
     const { NextResponse } = require("next/server")
     import blogModel from '@/lib/models/BlogModel.js'
-    import { ConnectDB } from '@/lib/config/d.js'
     import fs, { writeFile } from 'fs/promises'
     const LoadDb= async()=>
     {
-        await ConnectDB()   
+        await ConnectmongoDB()   
     }
 
     LoadDb()
@@ -46,6 +45,5 @@
         }
 
         await blogModel.create(blogData);
-        console.log(blogData)
         return NextResponse.json({success:true,msg:"Blog"})
     } 

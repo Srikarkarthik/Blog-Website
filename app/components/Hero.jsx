@@ -16,7 +16,6 @@ const Hero = () => {
         }
     const handlesubmit=async()=>
     {
-        alert("Your clicked")
         const response=await axios.post("/api/email",store)
         console.log(response.data)
     }

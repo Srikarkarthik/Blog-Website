@@ -52,7 +52,7 @@ const Page = ({ params }) => {
           </div>
         </div>
         <div className="image max-w-[700px] mx-auto ">
-          <Image src={data.image} width={1380} height={1380} alt=""></Image>
+          <Image src={`${data.image}`} width={1380} height={1380} alt=""></Image>
           <div className='hi max-sm:ml-6'>
             <div className="introduction text-xl font-bold">
               Introduction:
@@ -87,8 +87,6 @@ const Page = ({ params }) => {
               </div>
             </div>
           </div>
-
-
         </div>
 
       </div>
