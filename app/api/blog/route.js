@@ -14,16 +14,22 @@
         const { searchParams } = new URL(request.url)
         const blogid = searchParams.get("id")
         console.log("Blog ID from query:", blogid)
-        if(blogid)
-        {
-            const blog= await blogModel.findById(blogid)
-            return NextResponse.json(blog)
-        }
-        else
-        {
-            const blogs= await blogModel.find({})
-            return NextResponse.json({blogs})
-        }
+        if (blogid) {
+    if (!mongoose.Types.ObjectId.isValid(blogid)) {
+      return NextResponse.json({ error: "Invalid Blog ID" }, { status: 400 });
+    }
+
+    const blog = await blogModel.findById(blogid);
+
+    if (!blog) {
+      return NextResponse.json({ error: "Blog not found" }, { status: 404 });
+    }
+
+    return NextResponse.json(blog);
+  }
+
+  const blogs = await blogModel.find({});
+  return NextResponse.json({ blogs });
         
     }
 
